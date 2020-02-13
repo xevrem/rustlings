@@ -6,19 +6,19 @@
 
 // I AM NOT DONE
 
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 
 fn main() {
     let numbers: Vec<_> = (0..100u32).collect();
-    let shared_numbers = Arc::new(numbers);
-    let child_numbers = Arc::clone(&shared_numbers);
+    let shared_numbers = Arc::new(Mutex::new(numbers));
     let mut joinhandles = Vec::new();
 
     for offset in 0..8 {
         joinhandles.push(thread::spawn(move || {
             let mut i = offset;
             let mut sum = 0;
+            let child_numbers = Arc::clone(&shared_numbers);
             while i < child_numbers.len() {
                 sum += child_numbers[i];
                 i += 5;

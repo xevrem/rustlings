@@ -517,17 +517,6 @@ returning an `Ok` result if those checks determine that everything is... okay :)
 
 # STANDARD LIBRARY TYPES
 
-[[exercises]]
-name = "arc1"
-path = "exercises/standard_library_types/arc1.rs"
-mode = "compile"
-hint = """
-Make `shared_numbers` be an `Arc` from the numbers vector. Then, in order
-to avoid creating a copy of `numbers`, you'll need to create `child_numbers`
-inside the loop but still in the main thread.
-
-`child_numbers` should be a clone of the Arc of the numbers instead of a
-thread-local copy of the numbers."""
 
 [[exercises]]
 name = "iterators2"
@@ -610,3 +599,16 @@ answers and don't understand why they work and yours doesn't.
 If you've learned from the sample solutions, I encourage you to come
 back to this exercise and try it again in a few days to reinforce
 what you've learned :)"""
+
+
+[[exercises]]
+name = "arc1"
+path = "exercises/standard_library_types/arc1.rs"
+mode = "compile"
+hint = """
+Make `shared_numbers` be an `Arc` from the numbers vector. Then, in order
+to avoid creating a copy of `numbers`, you'll need to create `child_numbers`
+inside the loop but still in the main thread.
+
+`child_numbers` should be a clone of the Arc of the numbers instead of a
+thread-local copy of the numbers."""
